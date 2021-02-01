@@ -4,11 +4,21 @@ let cl = console.log;
 let ele = document.querySelector("canvas")
 let ctx = ele.getContext("2d")
 
-var x = y = 10;
+let startX = startY = 10;
+let endX = ele.width - 50
+
+let x = startX
+let y = startY
+var duration  = 0
 var width = height = 50;
 
+function lerp(start, end, speed) {
+    return start + (end - start) * speed
+}
+
 function logic () {
-    x += 10;
+    duration += 0.02
+    x = lerp(startX, endX, duration)
     if (x < ele.width - width) requestAnimationFrame(draw);
     }
 
